@@ -11,6 +11,7 @@ import tf.transformations as tfm
 from geometry_msgs.msg import Pose, Quaternion
 import math
 import helper
+from me212bot.msg import WheelCmdVel
 
 if DEMO==1:
     from Adafruit_MotorHAT import Adafruit_MotorHAT
@@ -29,14 +30,21 @@ def main():
         odometry_thread.start()
     
     ## 1. Initialize a subscriber (subscribe ROS topic)
-    ## cmdvel_sub = ???
+    cmdvel_sub = rospy.Subscriber('/cmdvel', WheelCmdVel, cmdvel_callback)
     
     rospy.spin()
 
 
 ## msg handling function (Need to modify)
 def cmdvel_callback(msg):  
-    print "cmdvel callback"
+    print "msg.desiredWV_L", msg.desiredWV_L
+    print "msg.desiredWV_R", msg.desiredWV_R
+#    leftMotor.setSpeed(math.abs(msg.desiredWV_L)*10)
+#   rightMotor.setSpeed(math.abs(msg.desiredWV_R)*10)
+#    if msg.desiredWV_L > 0: leftMotor.run(1)
+#    else: leftMotor.run(2)
+#    if msg.desiredWV_R > 0: rightMotor.run(1)
+#    else: rightMotor.run(2)
     ## unpack msg and interpret it to adafruit motor commands 
     ## adafruit motor initialization: see line 15~18
     ## adafruit motor cmds: leftMotor.setSpeed(), leftMotor.run()
