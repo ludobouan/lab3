@@ -39,8 +39,8 @@ def main():
 def cmdvel_callback(msg):  
     print "msg.desiredWV_L", msg.desiredWV_L
     print "msg.desiredWV_R", msg.desiredWV_R
-#    leftMotor.setSpeed(math.abs(msg.desiredWV_L)*10)
-#   rightMotor.setSpeed(math.abs(msg.desiredWV_R)*10)
+#    leftMotor.setSpeed(int(math.fabs(msg.desiredWV_L)*100))
+#    rightMotor.setSpeed(int(math.fabs(msg.desiredWV_R)*100))
 #    if msg.desiredWV_L > 0: leftMotor.run(1)
 #    else: leftMotor.run(2)
 #    if msg.desiredWV_R > 0: rightMotor.run(1)
